@@ -1,0 +1,48 @@
+
+.div1
+{
+    align-content: center;
+}
+.body
+{
+    background-image: url("breast-cancer.jpg");
+    background-color: #cccccc;
+    background-size: cover;
+}
+.img
+{
+    background-size: cover;
+}
+
+.imageDiv
+{
+    margin:400px;
+}
+.mainbody
+{
+    background-image: url("Zoey-with-Baby-Doll.jpg") ;
+    background-repeat: no-repeat;
+    background-color: #cccccc;
+    background-size: cover ;
+}
+h2 {
+    position: absolute;
+    top: 50px;
+    left:100px;
+    width: 100%;
+    text-decoration-color: aquamarine;
+    font-family: 'Knewave', cursive;
+    font-size: 80px;
+}
+.field{
+    position: absolute;
+    color: aquamarine ;
+    margin:0 auto;
+    color: aquamarine;
+}
+.submit
+{
+    background-color: aquamarine;
+    width: 2.4cm;
+    height: 1.4cm;
+}

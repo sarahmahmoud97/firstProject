@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="coverPagecss.css">
+    <meta charset="UTF-8">
+    <title>Cancer Management System</title>
+    <link href="https://fonts.googleapis.com/css?family=Knewave|Lemonada" rel="stylesheet">
+</head>
+<body class="mainbody">
+<form action="" class="">
+    <input type="button" value="sign up" onclick="window.location='registeration.html'">
+    &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <a href="mailto:sarahmahmoud97@hotmail.com">Contact Us</a> <br>
+    Search: <input type="search" name="search" pattern="[^'\x22]+" title="Invalid input">
+    <input type="submit">
+</form>
+
+<div class="image">
+
+    <h2> <span>Never Give up <br></span> </h2>
+</div>
+<div class="imageDiv">
+<img src="faith.jpg" alt="" class="mySlides" width="500px" height="400px">
+<img src="hope.jpg" alt="" class="mySlides" width="500px" height="400px">
+<img src="care.jpg" alt="" class="mySlides" width="500px" height="400px">
+<img src="image(1).jpg" alt="" class="mySlides" width="500px" height="400px">
+<img src="patientsrights.jpg" class="mySlides" alt="" width="500px" height="400px">
+</div>
+<script type="text/javascript">
+    var slideIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > x.length) {slideIndex = 1}
+        x[slideIndex-1].style.display = "block";
+        setTimeout(carousel, 3000); // Change image every 3 seconds
+    }
+
+</script>
+</body>
+</html>

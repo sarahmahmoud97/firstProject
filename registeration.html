@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="coverPagecss.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body id="body" class="body">
+<div id="div1" class="div1">
+<form action="afterRegisteration.html" method="post" style="align-content: center">
+    <fieldset style="width:200px; align:center;" id="field" class="field">
+        <legend>Registeration Info</legend> <br>
+    <label for="user">Username *</label>  <br>
+    <input type="text" placeholder="username" id="user" name="username" size="50" required> <br> <br>
+    <label for="email">Email *</label> <br>
+    <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="username@address.com" x-moz-errormessage="This is not a valid e-mail" id="email" name="email" size="50" required><br> <br>
+    <label for="password">Password *</label> <br>
+    <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+           title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+           x-moz-errormessage="Not valid password" placeholder="password" id="password" size="50"  name="password" required><br> <br>
+    <label for="pass">Confirm Password *</label> <br>
+    <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onkeyup="checkPass();return false;"
+           title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+           x-moz-errormessage="Not valid password" placeholder="confirm your password" id="pass" size="50"  name="pass2" required> <br>
+        <span id="confirmMessage" class="confirmMessage"></span> <br><br>
+        <label for="phone">Phone *</label> <br>
+        <input type="text" id="phone" placeholder="Phone" name="phone" size="50"> <br> <br>
+    <input type="submit" class="submit" value="register" onclick=alert("Done")> &nbsp; &nbsp; &nbsp; &nbsp;
+    <input type="reset" class="submit" value="Reset" name="reset">
+    </fieldset>
+</form>
+    <script type="text/javascript">
+        function checkPass()
+        {
+            //Store the password field objects into variables ...
+            var pass1 = document.getElementById('password');
+            var pass2 = document.getElementById('pass');
+            //Store the Confimation Message Object ...
+            var message = document.getElementById('confirmMessage');
+            //Set the colors we will be using ...
+            var goodColor = "#66cc66";
+            var badColor = "#ff6666";
+            //Compare the values in the password field
+            //and the confirmation field
+            if(pass1.value == pass2.value){
+                //The passwords match.
+                //Set the color to the good color and inform
+                //the user that they have entered the correct password
+                pass2.style.backgroundColor = goodColor;
+                message.style.color = goodColor;
+                message.innerHTML = "Passwords Match!"
+            }else{
+                //The passwords do not match.
+                //Set the color to the bad color and
+                //notify the user.
+                pass2.style.backgroundColor = badColor;
+                message.style.color = badColor;
+                message.innerHTML = "Passwords Do Not Match!"
+            }
+        }
+
+    </script>
+</div>
+</body>
+</html>
