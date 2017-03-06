@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+      <link rel="stylesheet" href="coverPagecss.css" type="text/css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="hope2.jpg">
+
+    <title>Counter - Coming Soon Theme</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="soon.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/soon/respond.min.js"></script>
+    <![endif]-->
+    
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+
+
+  <!-- START BODY -->
+  <body class="nomobile">
+
+    <!-- START HEADER -->
+    <section id="header">
+        <div class="container">
+            <header>
+                <!-- HEADLINE -->
+                <h1 data-animated="GoIn">اليوم العالمي <b>للسرطان </b> </h1>
+            </header>
+            <!-- START TIMER -->
+            <div id="timer" data-animated="FadeIn">
+                <!--<p id="message"></p>-->
+                <div id="days"  class="timer_box" ></div>
+                <div id="hours"  class="timer_box" ></div>
+                <div id="minutes" class="timer_box" ></div>
+                <div id="seconds" class="timer_box" ></div>
+            </div>
+            <!-- END TIMER -->
+            <div class="col-lg-4 col-lg-offset-4 mt centered">
+                <em>	<h4> <b>أود الحصول على تذكير   </b></h4> </em>
+				<form class="form-inline" role="form" action="mailto:sarahmahmoud97.sm@gmail.com">
+				  <div class="form-group">
+                      <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email Address">
+				    <label class="sr-only" for="exampleInputEmail2" > <b>البريد الإلكتروني</b></label>
+
+				  </div>
+                    <br>
+				  &nbsp;<button type="submit" id="sendBut" class="btn btn-info">ارسل</button>
+				</form>            
+			</div>
+            
+        </div>
+        <!-- LAYER OVER THE SLIDER TO MAKE THE WHITE TEXTE READABLE -->
+        <div id="layer"></div>
+        <!-- END LAYER -->
+        <!-- START SLIDER -->
+        <div id="slider" class="rev_slider">
+            <ul>
+              <li data-transition="slideleft" data-slotamount="1" data-thumb="11.jpg">
+                <img src="11.jpg">
+              </li>
+              <li data-transition="slideleft" data-slotamount="1" data-thumb="9ae79c50b7883072fcf1bdef68ce28aa.jpg">
+                <img src="9ae79c50b7883072fcf1bdef68ce28aa.jpg">
+              </li>
+              <li data-transition="slideleft" data-slotamount="1" data-thumb="42a14bed9e0045010bea6af246509878.jpg">
+                <img src="42a14bed9e0045010bea6af246509878.jpg">
+              </li>
+              <li data-transition="slideleft" data-slotamount="1" data-thumb="061015_breastcancer_THUMB_LARGE.jpg">
+                <img src="061015_breastcancer_THUMB_LARGE.jpg">
+              </li>
+            </ul>
+        </div>
+        <!-- END SLIDER -->
+    </section>
+
+    <!-- counter -->
+    <!-- Display the countdown timer in an element -->
+    <p id="demo"></p>
+
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Feb 14, 2018 12:00:00").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+            // Get todays date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now an the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id
+            document.getElementById("days").innerHTML = days +"<br><br>" + "days";
+            document.getElementById("hours").innerHTML = hours +"<br><br>" + "hours ";
+            document.getElementById("minutes").innerHTML = minutes +"<br><br>" + "minutes ";
+            document.getElementById("seconds").innerHTML = seconds +"<br><br>" + "seconds ";
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+
+               // document.getElementById("demo").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+    <!-- END HEADER -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/modernizr.custom.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="js/soon/plugins.js"></script>
+    <script src="js/soon/jquery.themepunch.revolution.min.js"></script>
+    <script src="js/soon/custom.js"></script>
+  </body>
+  <!-- END BODY -->
+</html>
