@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>تسجيل الدخول كمريض</title>
+    <title>تسجيل الدخول كدكتور</title>
     <link rel="shortcut icon" href="hope2.jpg">
     <link rel="stylesheet" href="trueloginCSS.css">
     <script type="text/javascript">
@@ -15,19 +15,18 @@
 <div class="login-page">
     <div class="form">
         <form class="register-form">
-            <input type="text" placeholder="اسم المستخدم / file No."/>
+            <input type="text" placeholder="اسم المستخدم / ID No."/>
             <input type="password" placeholder="كلمة المرور"/>
             <input type="text" placeholder="عنوان البريد الإلكتروني"/>
             <button style="direction: rtl;">انشئ حساب</button>
             <p class="message" style="direction: rtl;">تملك حساب مسبقا؟ <a href="#">سجّل الدخول</a></p>
         </form>
-        <form class="login-form" method="post" action="loginphpPatient.php">
-            <input type="text" placeholder=" file Number" name="fileNum"/>
-            <input type="password" placeholder="كلمة المرور" name="password"/>
-            <input name="rem" type="checkbox" value="" id="cb"><label for="cb">تذكرني</label>
-            <button style="direction: rtl;" name="login">تسجيل الدخول</button>
-
-            <p class="message" style="direction: rtl;">لا تملك حساب؟ <a href="patientReg.html">أنشئ حساب</a></p>
+        <form class="login-form" action="loginphpDr.php" method="post">
+            <input type="text" placeholder=" ID Number" name="ID"/>
+            <input type="password" placeholder="كلمة المرور" name="drPass"/>
+            <input name="remm" type="checkbox" value="" id="cb"><label for="cb">تذكرني</label>
+            <button style="direction: rtl;">تسجيل الدخول</button>
+            <p class="message" style="direction: rtl;">لا تملك حساب؟ <a href="#">أنشئ حساب</a></p>
         </form>
     </div>
 </div>

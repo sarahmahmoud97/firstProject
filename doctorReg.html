@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Registeration</title>
+    <link rel="shortcut icon" href="hope2.jpg">
+    <style>
+        body{
+            background-image: url(dr2.png);
+            background-size: cover;
+        }
+    </style>
+    <script type="text/javascript">
+        function goBack() {
+            window.history.back()
+        }
+    </script>
+</head >
+<body >
+<button onclick="goBack()" style="background-color: #e91e63">الرجوع للخلف</button>
+&nbsp;&nbsp;&nbsp;&nbsp; <button style="background-color: #e91e63"><a style="" href="homePage.html">الصفحة الرئيسية</a></button>
+<div class="logupdiv" style="margin-left:490px; margin-top: 40px; border: solid; border-color: #e91e63;width: 260px; padding:9px">
+    <form action="signUpPhp.php" method="post">
+    Name:*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" name="username" placeholder="Full Name" size="28" required><br><br>
+    ID Number:* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" name="idnumber" placeholder="ID number" size="28" required><br><br>
+    Email:*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="email" placeholder="Email" name="email" size="28" required><br><br>
+    Password:*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input x-moz-errormessage="Not valid password" name="passs" type="password" placeholder="password" size="28" required pattern="(?=.*[a-z])(?=.*[0-9]).{8,}"><br><br>
+    Confirm Password:* <input x-moz-errormessage="Not valid password" type="password" onkeyup="checkPass();return false;" placeholder="confirm password" size="28" required pattern="(?=.*[a-z])(?=.*[0-9]).{8,}"><br><br>
+        <span id="confirmMessage" class="confirmMessage"></span> <br>
+        Gender:*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <select name="gender">
+            <option value="female" selected>أنثى</option>
+            <option value="male">ذكر</option>
+        </select><br><br>
+        Work: <input type="text" name="work" placeholder="you jop"> <br><br>
+     Say Sth About you: <textarea name="descr" id="" cols="30" rows="10"></textarea>
+    Name Of Hospital:*&nbsp;&nbsp;&nbsp;<input type="text" placeholder="Hospital You Work In" name="hosp" size="27" required><br><br>
+    Location:*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;<input type="text" placeholder="address" name="" size="27"><br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button value="register" name="reg" style="background-color: #e91e63">Register</button>
+
+    </form>
+</div>
+<script type="text/javascript">
+    function checkPass()
+    {
+        //Store the password field objects into variables ...
+        var pass1 = document.getElementById('password');
+        var pass2 = document.getElementById('pass');
+        //Store the Confimation Message Object ...
+        var message = document.getElementById('confirmMessage');
+        //Set the colors we will be using ...
+        var goodColor = "#66cc66";
+        var badColor = "#ff6666";
+        //Compare the values in the password field
+        //and the confirmation field
+        if(pass1.value == pass2.value){
+            //The passwords match.
+            //Set the color to the good color and inform
+            //the user that they have entered the correct password
+            pass2.style.backgroundColor = goodColor;
+            message.style.color = goodColor;
+            message.innerHTML = "Passwords Match!"
+        }else{
+            //The passwords do not match.
+            //Set the color to the bad color and
+            //notify the user.
+            pass2.style.backgroundColor = badColor;
+            message.style.color = badColor;
+            message.innerHTML = "Passwords Do Not Match!"
+        }
+    }
+
+</script>
+
+</body>
+</html>
