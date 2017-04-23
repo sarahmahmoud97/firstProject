@@ -5,6 +5,7 @@ session_start();
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
 <!--[if !IE]><!--> <html > <!--<![endif]-->
+
 <head>
 
     <title>user profile</title>
@@ -40,7 +41,7 @@ session_start();
     ?>
 </head> 
 
-<body onload="">
+<body onload="" style="direction: rtl; text-align: right">
 <?php
 if(!$_SESSION)
     session_start();
@@ -58,6 +59,9 @@ $address='';
 $gender='';
 $drr='';
 $desc='';
+$add='';
+$str='';
+
 if ($_SESSION['user']=='patient'){
     $idOwner=$_SESSION['owner']; //file number
     $query="SELECT * FROM `patients` WHERE  `fileno`='$idOwner'";
@@ -74,15 +78,19 @@ if ($_SESSION['user']=='patient'){
 }
 else if($_SESSION['user']=='dr'){
     $idOwner=$_SESSION['owner'];
-    $query="SELECT * FROM `patients` WHERE  `ID`='$idOwner'";
+    $query="SELECT * FROM `doctors` WHERE  `ID`='$idOwner'";
     $result=$db->query($query);
+    if(!$result)
+        echo "<script> alert('FAILED');</script>";
     $row=mysqli_fetch_array($result);
     $name=$row['drname'];
     $email=$row['dremail'];
     $phone=$row['work'];
-    $address=$row['hosname'];
+    $add=$row['hosname'];
     $gender=$row['gender'];
     $desc=$row['description'];
+    $address=$row['address'];
+    $drr='';
 
 }
 
@@ -93,12 +101,14 @@ echo "
             <!-- we put the profile picture according to six--->";
 
              if ($_SESSION['user'] == 'patient'){
+                 $str='الدكتور المسؤول عني :';
                  if($row['gender']=='male')
                      echo "<img class='profile-image img-responsive pull-left' id='image' src='patman.ico' alt='James Lee' >";
                  else
                      echo "<img class='profile-image img-responsive pull-left' id='image' src='patwoman.ico' alt='James Lee' >";
              }
              else if($_SESSION['user'] == 'dr'){
+                 $str='اسم المشفى الذي اعمل به : ';
                  if($row['gender']=='male')
                      echo "<img class='profile-image img-responsive pull-left' id='image' src='drmale.ico' alt='James Lee' >";
                  else
@@ -109,9 +119,9 @@ echo "
             <!--<img class=\"profile-image img-responsive pull-left\" id=\"image\" src=\"doctor2.ico\" alt=\"James Lee\" />-->
 
             <div class=\"profile-content pull-left\">
-                <h1 class=\"name\" id=\"persoNname\">Name : $name </h1>
-                <label for=\"personWork\" id=\"lab0\">ID/File No. : </label> $idOwner<h2 class=\"desc\" id=\"personWork\"></h2>
-                <label for=\"phoneNumber\" id=\"lab1\">Phone/work : </label> $phone  <p id=\"phoneNumber\"></p>
+                <h1 class=\"name\" id=\"persoNname\">الإسم : $name </h1>
+                <label for=\"personWork\" id=\"lab0\">رقم الملف\الرقم التعريفي : </label> $idOwner<h2 class=\"desc\" id=\"personWork\"></h2>
+                <label for=\"phoneNumber\" id=\"lab1\">رقم الجوال\العمل : </label> $phone  <p id=\"phoneNumber\"></p>
 
                 <ul class=\"social list-inline\">
                     <li><a href=\"#\"><i class=\"fa fa-twitter\"></i></a></li>                   
@@ -121,7 +131,7 @@ echo "
                     <li class=\"last-item\"><a href=\"#\"><i class=\"fa fa-hacker-news\"></i></a></li>                 
                 </ul> 
             </div><!--//profile-->
-            <a class=\"btn btn-cta-primary pull-right\" href=\"http://themes.3rdwavemedia.com/\" target=\"_blank\"><i class=\"fa fa-paper-plane\"></i> Contact Me</a>              
+            <a class=\"btn btn-cta-primary pull-right\" href=\"http://themes.3rdwavemedia.com/\" target=\"_blank\"><i class=\"fa fa-paper-plane\"></i>تواصل معي</a>              
         </div><!--//container-->
     </header><!--//header-->
     
@@ -130,16 +140,22 @@ echo "
             <div class=\"primary col-md-8 col-sm-12 col-xs-12\">
                 <section class=\"about section\">
                     <div class=\"section-inner\">
-                        <h2 class=\"heading\">About Me</h2>
+                        <h2 class=\"heading\">ملاحظات يومية :</h2>
+                        
                         <div class=\"content\">
-                            <p id=\"desc\"> $desc 
-                        </div><!--//content-->
+                            <textarea disabled name='ta' id=\"desc\" cols='80' rows='10'>  مبدئياً لا شيء </textarea>
+                            
+                        </div>
+                        
+                        <button style=\"width: 50px; height: 30px ; background-color: #f190bd;\" onclick=\"document.getElementsByName('ta')[0].disabled=false; \">تعديل</button>
+                        <button style=\"width:50px; height: 30px; background-color: #f190bd;\" onclick=\"document.getElementsByName('ta')[0].disabled=true; \">حفظ</button><!--//content-->
+                       
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
 
                 <section class=\"experience section\">
                     <div class=\"section-inner\">
-                        <h2 class=\"heading\">Work Experience</h2>
+                        <h2 class=\"heading\">المواهب أو خبرات العمل</h2>
                         <div class=\"content\">
                             <div class=\"item\">
                                 <h3 class=\"title\">Co-Founder & Lead Developer - <span class=\"place\"><a href=\"#\">Startup Hub</a></span> <span class=\"year\">(2014 - Present)</span></h3>
@@ -162,37 +178,54 @@ echo "
             <div class=\"secondary col-md-4 col-sm-12 col-xs-12\">
                  <aside class=\"info aside section\">
                     <div class=\"section-inner\">
-                        <h2 class=\"heading sr-only\">Basic Information</h2>
+                        <h2 class=\"heading sr-only\">معلومات أساسية عني :</h2>
                         <div class=\"content\">
                             <ul class=\"list-unstyled\">
-                                <li><i class=\"fa fa-map-marker\"></i><span class=\"sr-only\">Location:</span>San Francisco, US</li>
-                                <li><i class=\"fa fa-envelope-o\"></i><span class=\"sr-only\">Email:</span><a href=\"#\">jameslee@website.com</a></li>
-                                <li><i class=\"fa fa-link\"></i><span class=\"sr-only\">Website:</span><a href=\"#\">http://www.website.com</a></li>
+                                <li><i class=\"fa fa-map-marker\"></i><span class=\"sr-only\">العنوان:</span>$add</li>
+                                <li><i class=\"fa fa-envelope-o\"></i><span class=\"sr-only\">عنوان البريد الإلكتروني:</span><a href=\"#\">$email</a></li>
+                                <li><i class=\"fa fa-link\"></i><span class=\"sr-only\">$str</span><a href=\"#\">$address</a></li>
                             </ul>
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
                 </aside><!--//aside-->
-                
-                <aside class=\"testimonials aside section\">
+       " ;
+             if($_SESSION['user']=='patient'){
+                echo "<aside class=\"testimonials aside section\">
                     <div class=\"section-inner\">
-                        <h2 class=\"heading\">Testimonials</h2>
+                        <h2 class=\"heading\">اقتباس رائع :</h2>
                         <div class=\"content\">
                             <div class=\"item\">
                                 <blockquote class=\"quote\">                                  
-                                    <p><i class=\"fa fa-quote-left\"></i>James is an excellent software engineer and he is passionate about what he does. You can totally count on him to deliver your projects!</p>
+                                    <p><i class=\"fa fa-quote-left\"></i> تحية لكل الأشخاص الرائعين في حياتي وحياتكم , والذين يخوضون حربا ضد السرطان , ما يهم هو الحب وسوف نقهر هذا المرض في النهاية!</p>
                                 </blockquote>                
-                                <p class=\"source\"><span class=\"name\">Tim Adams</span><br /><span class=\"title\">Curabitur commodo</span></p>                                                             
+                                <p class=\"source\"><span class=\"name\">اليسيا كايز</span><br /><span class=\"title\">مقولات المشاهير</span></p>                                                             
                             </div><!--//item-->
                             
-                            <p><a class=\"more-link\" href=\"#\"><i class=\"fa fa-external-link\"></i> More on Linkedin</a></p> 
+                            <p><a class=\"more-link\" href=\"https://www.facebook.com/%D8%AD%D9%85%D9%84%D8%A9-%D8%A7%D9%84%D9%88%D9%82%D9%88%D9%81-%D9%85%D8%B9-%D9%85%D8%B1%D8%B6%D9%89-%D8%A7%D9%84%D8%B3%D8%B1%D8%B7%D8%A7%D9%86-110108659048103/\"><i class=\"fa fa-external-link\"></i> للمزيد على صفحة الفيسبوك</a></p> 
                             
                         </div><!--//content-->
                     </div><!--//section-inner-->
                 </aside><!--//section-->
-                
-                <aside class=\"education aside section\">
+                "; }else {
+                    echo "<aside class=\"testimonials aside section\">
                     <div class=\"section-inner\">
-                        <h2 class=\"heading\">Education</h2>
+                        <h2 class=\"heading\">اقتباس رائع :</h2>
+                        <div class=\"content\">
+                            <div class=\"item\">
+                                <blockquote class=\"quote\">                                  
+                                    <p><i class=\"fa fa-quote-left\"></i> إن التقوى المنشودة ليست مسبحة درويش ولا عمامة متمشيخ ولا زاوية متعبد ,انها علم وعمل ودين ودنيا,وروح ومادة وتخطيط وتنظيم واتقان واحسان.</p>
+                                </blockquote>                
+                                <p class=\"source\"><span class=\"name\">ابو الحسن الندوي</span><br /><span class=\"title\">مقولات </span></p>                                                             
+                            </div><!--//item-->
+                            
+                            <p><a class=\"more-link\" href=\"http://www.huffpostarabi.com/2016/08/18/story_n_11594106.html\"><i class=\"fa fa-external-link\"></i> اقرأ شيئا مفيداً</a></p> 
+                            
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
+                </aside><!--//section-->";}
+               echo "<aside class=\"education aside section\">
+                    <div class=\"section-inner\">
+                        <h2 class=\"heading\">معلومات عن علمي وشهاداتي :</h2>
                         <div class=\"content\">
                             <div class=\"item\">                      
                                 <h3 class=\"title\"><i class=\"fa fa-graduation-cap\"></i> MSc Psychology and Computer Science</h3>

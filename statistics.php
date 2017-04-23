@@ -1,6 +1,6 @@
 <?php
 
-include 'homePage.html';
+include 'homePage.php';
 
 if (isset($_POST['slct'])){
     $year= $_POST['statis'];

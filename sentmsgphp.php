@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 
         if ($res) {
             echo "<script>alert('recieved')</script>";
-            echo "<script>window.location.href='homePage.html' </script>";
+            echo "<script>window.location.href='homePage.php' </script>";
 
         }
         else
