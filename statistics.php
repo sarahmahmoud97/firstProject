@@ -20,7 +20,6 @@ if (isset($_POST['slct'])){
     echo "<script language='JavaScript'> alert('succeed');</script>";
     $data=mysqli_fetch_array($result);
     echo "<script language='JavaScript'> $('#femm').data('percent',".$data['female'].");</script>";
-
     echo "<script language='JavaScript'> document.getElementById('fem').setAttribute('data-percent',".$data['female']."%".")</script>";
     echo "<script language='JavaScript'> document.getElementById('mal').innerHTML="." ".$data['male']."%"."</script>";
     echo "<script language='JavaScript'> alert('succeed ".$data['male']."');"."</script> ";

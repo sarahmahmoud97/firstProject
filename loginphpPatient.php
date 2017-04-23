@@ -13,49 +13,61 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
             $password = $_POST['password'];
             $fileNo = $_POST['fileNum'];
         }
+        else{
+            header('location: patientLogin.html');
+        }
 //in data base tables file number will be already exist
-        $query = "SELECT * FROM `patients` WHERE  `fileno`='$fileNo' and `pass`='$password'";
+        $query = "SELECT * FROM `patients` WHERE  `fileno`='$fileNo' OR `pass`='$password'";
         $result = $db->query($query);
-        $row = mysqli_fetch_array($result);
-        $rows = mysqli_num_rows($result);
-        if (mysqli_num_rows($result) == 1) {
-
-            if ($fileNo == $row['fileno'] and $password == $row['pass']) {
+        if (!$result) {
+            echo "<script language='JavaScript'>alert('FAILED'); </script>";
+        }
+        //$row = mysqli_fetch_array($result);
+        foreach ($result as $item) {
+            if ($fileNo == $item['fileno'] and $password == $item['pass']) {
                 if (isset($_POST['rem'])) {
                     setcookie('fileNumber', $fileNo, time() * 60 * 60 * 10); //save the file number 10 days only
                     setcookie('password', $password, time() * 60 * 60 * 10);
                 }
-
+                $_SESSION['owner']=$fileNo;
                 $_SESSION['user'] = 'patient';
-                header('location: userProfile.html');
+                echo "<script>window.location.href='userProfile.php' </script>";
+                break;
             }
          else {
 
+             if ($fileNo == $item['fileno']) {
+                 $_SESSION['user'] = 'patient';
+                 echo "<script language='JavaScript'>
+                        var r = confirm(' هل تريد المحاولة مرة أخرى ؟؟ اكبس الغاء اذا كنت تريد استعادة كلمة المرور');
+                        if (r == true) {
+                            window.location.href='patientLogin.html';
+                         } else {
+                             window.location.href='resetPass.html';
+                          }
 
-            echo "<script language='javascript'> alert('لا يوجد لديك حساب ,تأكد من المعلومات المدخلة') </script>";
-            echo "<script></script>";
-             if ($fileNo == $row['fileno']) {
-                 echo "<script>alert('رقم الملف او كلمة المرور غير صحيحة ,هل تريد استرجاع كلمة المرور ؟')</script>";
+                        </script>";
 
-                 $email = $row['email'];
-                 echo "<script> alert('$email')</script>";
 
-                 $passwordd = $row['pass'];
+             } else if ($ID != $item['ID']) {
+                 echo "<script>alert('الرقم الشخصي و كلمة المرور غير صحيحين , قم بإنشاء حساب من فضلك لتتمكن من تسجيل الدخول')</script>";
+                 echo "<script>window.location.href ='doctorReg.html';</script>";
 
-                 header('location: resetPass.php');
-             } else {
-                 header('location: patientLogin.html');
              }
          }
-
-
         }
         $result->free();
     } else {
         header('location:patientLogin.html');
     }
+    echo "<script>alert('الرقم الشخصي و كلمة المرور غير صحيحين , قم بإنشاء حساب من فضلك لتتمكن من تسجيل الدخول')</script>";
+    echo "<script>window.location.href ='patientReg.html';</script>";
 
 }
+else
+    echo "<script>alert('يوجد خلل , انت لم تأت من الصفحة المطلوبة , عذرا لن يتم طلبك')</script>";
+
+
 $db->close();
 ?>
 /**
