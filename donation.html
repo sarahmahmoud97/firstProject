@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+    <title>التبرع للمرضى</title>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="hope2.jpg">
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 3em 0;
+            color: #fff;
+            background: #f190bd;
+            font-family: Georgia, Times New Roman, serif;
+        }
+
+        #container {
+            width: 600px;
+            background: #fff;
+            color: #555;
+            border: 3px solid #ccc;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            border-radius: 10px;
+            border-top: 3px solid #ddd;
+            padding: 1em 2em;
+            margin: 0 auto;
+            -webkit-box-shadow: 3px 7px 5px pink;
+            -moz-box-shadow: 3px 7px 5px pink;
+            -ms-box-shadow: 3px 7px 5px pink;
+            box-shadow: 3px 7px 5px pink;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul > li {
+            padding: 0.12em 1em
+        }
+
+        label {
+            display: block;
+            float: left;
+            width: 130px;
+        }
+
+        input, textarea {
+            font-family: Georgia, Serif;
+        }
+
+
+    </style>
+</head>
+<body style="direction: rtl">
+<div id="container">
+    <h1>ما نَقُصَ مالٌ من صدقة</h1>
+    <form action="savePHP.php" method="post">
+        <ul>
+            <li>
+
+                <input type="text" name="carrier" id="carrier" required placeholder="ضع اسمك هنا !" />
+            </li>
+            <li>
+
+                <input type="text" name="phoneNumber" id="phoneNumber" required placeholder="رقم الهاتف" /></li>
+            <li>
+                <input type="text" name="amount" id="amount" required placeholder="المبلغ الذي تود التبرع به" />
+                <select name="type" id="type">
+                    <option value="dolar" selected>دولار</option>
+                    <option value="sheqil">شيقل</option>
+                    <option value="youro">يورو</option>
+                    <option value="dinar">دينار</option>
+                </select></li>
+            <li>
+
+                <textarea name="comment" required id="smsMessage" cols="45" rows="15" placeholder="ضع تعليقك هنا .."></textarea>
+            </li>
+            <li><input type="submit" name="donate" id="sendMessage" value="تبرع" /></li>
+        </ul>
+    </form>
+</div>
+</body>
+</html>

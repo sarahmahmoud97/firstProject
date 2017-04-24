@@ -6,7 +6,7 @@ $dbname='registerationdb';
 $db= new mysqli('localhost',$user,$password,$dbname) or die("Unable to connect");
 $fileNo='';
 $password='';
-
+$_SESSION['log']='12';
 if($_SERVER['REQUEST_METHOD']=='POST') {
     if (isset($_POST['login'])) {
         if (isset($_POST['fileNum']) && isset($_POST['password'])) {

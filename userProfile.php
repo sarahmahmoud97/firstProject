@@ -1,10 +1,15 @@
 <?php
 session_start();
+if($_SESSION['log']=='12')
+{
 ?>
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
-<!--[if !IE]><!--> <html > <!--<![endif]-->
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html> <!--<![endif]-->
 
 <head>
 
@@ -16,10 +21,11 @@ session_start();
     <meta name="description" content="Responsive HTML5 Website landing Page for Developers">
     <meta name="author" content="3rd Wave Media">
     <link rel="shortcut icon" href="hope2.jpg">
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <!-- Global CSS -->
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
     <!-- Plugins CSS -->
     <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
     <!-- github acitivity css -->
@@ -28,8 +34,8 @@ session_start();
     <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
     <![endif]-->
     <?php
@@ -39,62 +45,61 @@ session_start();
     }
 
     ?>
-</head> 
+</head>
 
 <body onload="" style="direction: rtl; text-align: right">
 <?php
-if(!$_SESSION)
+if (!$_SESSION)
     session_start();
 
-$user='root';
-$password='anabakrah7ali';
-$dbname='registerationdb';
-$db= new mysqli('localhost',$user,$password,$dbname) or die("Unable to connect");
-echo "<script> alert('successfully connected');</script>" ;
-$idOwner='';
-$name='';
-$email='';
-$phone='';
-$address='';
-$gender='';
-$drr='';
-$desc='';
-$add='';
-$str='';
-$result2='';
-if ($_SESSION['user']=='patient'){
-    $idOwner=$_SESSION['owner']; //file number
-    $query="SELECT * FROM `patients` WHERE  `fileno`='$idOwner'";
-    $query2="SELECT * FROM `specpat`";
-    $result2=$db->query($query2);
-    $result=$db->query($query);
-    $row=mysqli_fetch_array($result);
-    $name=$row['name'];
-    $email=$row['email'];
-    $phone=$row['phoneNo'];
-    $address=$row['address'];
-    $gender=$row['gender'];
-    $drr=$row['specDR'];
-    $desc=$row['description'];
+$user = 'root';
+$password = 'anabakrah7ali';
+$dbname = 'registerationdb';
+$db = new mysqli('localhost', $user, $password, $dbname) or die("Unable to connect");
+echo "<script> alert('successfully connected');</script>";
+$idOwner = '';
+$name = '';
+$email = '';
+$phone = '';
+$address = '';
+$gender = '';
+$drr = '';
+$desc = '';
+$add = '';
+$str = '';
+$result2 = '';
+if ($_SESSION['user'] == 'patient') {
+    $idOwner = $_SESSION['owner']; //file number
+    $query = "SELECT * FROM `patients` WHERE  `fileno`='$idOwner'";
+    $query2 = "SELECT * FROM `specpat`";
+    $result2 = $db->query($query2);
+    $result = $db->query($query);
+    $row = mysqli_fetch_array($result);
+    $name = $row['name'];
+    $email = $row['email'];
+    $phone = $row['phoneNo'];
+    $address = $row['address'];
+    $gender = $row['gender'];
+    $drr = $row['specDR'];
+    $desc = $row['description'];
 
-}
-else if($_SESSION['user']=='dr'){
-    $idOwner=$_SESSION['owner'];
-    $query="SELECT * FROM `doctors` WHERE  `ID`='$idOwner'";
-    $query2="SELECT * FROM `specdr`";
-    $result2=$db->query($query2);
-    $result=$db->query($query);
-    if(!$result)
+} else if ($_SESSION['user'] == 'dr') {
+    $idOwner = $_SESSION['owner'];
+    $query = "SELECT * FROM `doctors` WHERE  `ID`='$idOwner'";
+    $query2 = "SELECT * FROM `specdr`";
+    $result2 = $db->query($query2);
+    $result = $db->query($query);
+    if (!$result)
         echo "<script> alert('FAILED');</script>";
-    $row=mysqli_fetch_array($result);
-    $name=$row['drname'];
-    $email=$row['dremail'];
-    $phone=$row['work'];
-    $add=$row['hosname'];
-    $gender=$row['gender'];
-    $desc=$row['description'];
-    $address=$row['address'];
-    $drr='';
+    $row = mysqli_fetch_array($result);
+    $name = $row['drname'];
+    $email = $row['dremail'];
+    $phone = $row['work'];
+    $add = $row['hosname'];
+    $gender = $row['gender'];
+    $desc = $row['description'];
+    $address = $row['address'];
+    $drr = '';
 
 }
 
@@ -104,22 +109,21 @@ echo "
         <div class=\"container\">
             <!-- we put the profile picture according to six--->";
 
-             if ($_SESSION['user'] == 'patient'){
-                 $str='الدكتور المسؤول عني :';
-                 if($row['gender']=='male')
-                     echo "<img class='profile-image img-responsive pull-left' id='image' src='patman.ico' alt='James Lee' >";
-                 else
-                     echo "<img class='profile-image img-responsive pull-left' id='image' src='patwoman.ico' alt='James Lee' >";
-             }
-             else if($_SESSION['user'] == 'dr'){
-                 $str='اسم المشفى الذي اعمل به : ';
-                 if($row['gender']=='male')
-                     echo "<img class='profile-image img-responsive pull-left' id='image' src='drmale.ico' alt='James Lee' >";
-                 else
-                     echo "<img class='profile-image img-responsive pull-left' id='image' src='doctor2.ico' alt='James Lee' >";
+if ($_SESSION['user'] == 'patient') {
+    $str = 'الدكتور المسؤول عني :';
+    if ($row['gender'] == 'ذكر')
+        echo "<img class='profile-image img-responsive pull-left' id='image' src='patman.ico' alt='James Lee' >";
+    else
+        echo "<img class='profile-image img-responsive pull-left' id='image' src='patwoman.ico' alt='James Lee' >";
+} else if ($_SESSION['user'] == 'dr') {
+    $str = 'اسم المشفى الذي اعمل به : ';
+    if ($row['gender'] == 'ذكر')
+        echo "<img class='profile-image img-responsive pull-left' id='image' src='drmale.ico' alt='James Lee' >";
+    else
+        echo "<img class='profile-image img-responsive pull-left' id='image' src='doctor2.ico' alt='James Lee' >";
 
-             }
-            echo "
+}
+echo "
             <!--<img class=\"profile-image img-responsive pull-left\" id=\"image\" src=\"doctor2.ico\" alt=\"James Lee\" />-->
 
             <div class=\"profile-content pull-left\">
@@ -163,29 +167,32 @@ echo "
                         <h2 class=\"heading\">بياناتي المهمة :</h2>
                         <div class=\"content\">
                         ";
-                        if($_SESSION['user']=='patient'){
-                            foreach ($result2 as $item){
-                            echo "<div class=\"item\">
-                                <h3 class=\"title\">الدكتور المسؤول عني  - <span class=\"place\"><a href=\"#\">".$item['drName']."</a></span> <span class=\"year\"></span></h3>
-                                   <p>رقم هاتف الدكتور :".$item['drMobile']."
-                                <p>عنوان البريد الإلكتروني للدكتور :".$item['drEmail'].".</p> <br> <br> </div>
-                                ";}}
-                            else{
-                            foreach ($result2 as $item){
-                                echo "<div class=\"item\">
-                                <h3 class=\"title\">اسم المريض : - <span class=\"place\"><a href=\"#\">".$item['patname']."</a></span> <span class=\"year\"></span></h3>
-                                    <p>رقم ملف المريض : ".$item['patfileno'].".</p>
-                                <p>الحالة الصحية للمريض : ".$item['patstatus'].".</p>
-                            </div><!--//item-->";}
+if ($_SESSION['user'] == 'patient') {
+    foreach ($result2 as $item) {
+        echo "<div class=\"item\">
+                                <h3 class=\"title\">الدكتور المسؤول عني  - <span class=\"place\"><a href=\"#\">" . $item['drName'] . "</a></span> <span class=\"year\"></span></h3>
+                                   <p>رقم هاتف الدكتور :" . $item['drMobile'] . "
+                                <p>عنوان البريد الإلكتروني للدكتور :" . $item['drEmail'] . ".</p> <br> <br> </div>
+                                ";
+    }
+} else {
+    foreach ($result2 as $item) {
+        echo "<div class=\"item\">
+                                <h3 class=\"title\">اسم المريض : - <span class=\"place\"><a href=\"#\">" . $item['patname'] . "</a></span> <span class=\"year\"></span></h3>
+                                    <p>رقم ملف المريض : " . $item['patfileno'] . ".</p>
+                                <p>الحالة الصحية للمريض : " . $item['patstatus'] . ".</p>
+                                <p>عنوان البريد الإلكتروني للمريض :".$item['patemail']."</p>
+                            </div><!--//item-->";
+    }
 
-                            };
-               echo "    </div>
+};
+echo "    </div>
                      </div>
 
                </section>
                </div>";
 
-           echo" <div class=\"secondary col-md-4 col-sm-12 col-xs-12\">
+echo " <div class=\"secondary col-md-4 col-sm-12 col-xs-12\">
                  <aside class=\"info aside section\">
                     <div class=\"section-inner\">
                         <h2 class=\"heading sr-only\">معلومات أساسية عني :</h2>
@@ -198,9 +205,9 @@ echo "
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
                 </aside><!--//aside-->
-       " ;
-             if($_SESSION['user']=='patient'){
-                echo "<aside class=\"testimonials aside section\">
+       ";
+if ($_SESSION['user'] == 'patient') {
+    echo "<aside class=\"testimonials aside section\">
                     <div class=\"section-inner\">
                         <h2 class=\"heading\">اقتباس رائع :</h2>
                         <div class=\"content\">
@@ -216,8 +223,9 @@ echo "
                         </div><!--//content-->
                     </div><!--//section-inner-->
                 </aside><!--//section-->
-                "; }else {
-                    echo "<aside class=\"testimonials aside section\">
+                ";
+} else {
+    echo "<aside class=\"testimonials aside section\">
                     <div class=\"section-inner\">
                         <h2 class=\"heading\">اقتباس رائع :</h2>
                         <div class=\"content\">
@@ -232,18 +240,15 @@ echo "
                             
                         </div><!--//content-->
                     </div><!--//section-inner-->
-                </aside><!--//section-->";}
-               echo "<aside class=\"education aside section\">
+                </aside><!--//section-->";
+}
+echo "<aside class=\"education aside section\">
                     <div class=\"section-inner\">
-                        <h2 class=\"heading\">معلومات عن علمي وشهاداتي :</h2>
+                        <h2 class=\"heading\">نبذة عن تعليمك او مواهبك او عملك :</h2>
                         <div class=\"content\">
                             <div class=\"item\">                      
-                                <h3 class=\"title\"><i class=\"fa fa-graduation-cap\"></i> MSc Psychology and Computer Science</h3>
-                                <h4 class=\"university\">University College London <span class=\"year\">(2011-2012)</span></h4>
-                            </div><!--//item-->
-                            <div class=\"item\">
-                                <h3 class=\"title\"><i class=\"fa fa-graduation-cap\"></i> BSc Computer Science</h3>
-                                <h4 class=\"university\">University of Bristol <span class=\"year\">(2008-2011)</span></h4>
+                                <h3 class=\"title\"> $desc</h3>
+                              
                             </div><!--//item-->
                         </div><!--//content-->
                     </div><!--//section-inner-->
@@ -266,6 +271,12 @@ echo "
     <!-- custom js -->
     <script type=\"text/javascript\" src=\"assets/js/main.js\"></script>
  ";
+}
+else
+{
+    echo "<script>alert('To access this page , you must login first');</script>";
+    echo "<script>window.location.href='homePage.php'</script>";
+}
 ?>
 
 </body>

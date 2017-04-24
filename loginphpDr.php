@@ -8,6 +8,7 @@ $db= new mysqli('localhost',$user,$password,$dbname) or die("Unable to connect")
 $ID='';
 $drPass='';
 $row='';
+$_SESSION['log']='12';
 if($_SERVER['REQUEST_METHOD']=='POST') {
     if (isset($_POST['login'])) {
         if (isset($_POST['ID']) && isset($_POST['drPass'])) {

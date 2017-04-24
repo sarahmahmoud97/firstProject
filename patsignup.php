@@ -8,7 +8,6 @@ $db= new mysqli('localhost',$user,$password,$dbname);
 if($db->error){
     echo "<script language='JavaScript'>alert('FAILED'); </script>";
 }
-echo "<script language='JavaScript'>alert('successfully connected'); </script>";
 
 if (isset($_POST['submitBTN'])){
 
@@ -21,19 +20,24 @@ if (isset($_POST['submitBTN'])){
     $gender=$_POST['gender'];
     $address=$_POST['address'];
     $descr=$_POST['descc'];
+    $specdrr='ahmad';
+    $query="INSERT INTO `patients`(`fileno`, `name`, `email`, `pass`, `phoneNo`, `address`, `gender`, `description`, `specDR`) VALUES
+            ('$fileNo','$patname','$email','$pass','$phone','$address','$gender','$descr','$specdrr')";
+    $res=$db->query($query);
 
-    $query="INSERT INTO `patients`(`fileno`, `name`, `email`, `pass`, `phoneNo`, `address`, `gender`, `description`) VALUES
-            ('$fileNo','$patname','$email','$pass','$phone','$address','$gender','$descr')";
-    $result=$db->query($query);
-    if($result==true)
-        "<script language='JavaScript'>alert('succeed'); </script>";
+    if ($res==true){
+       echo "<script language='JavaScript'>alert('succeed'); </script>";
+        echo "<script language='JavaScript'>window.location.href='patientLogin.html' </script>";
+    }
     else
-        "<script language='JavaScript'>alert('failed'); </script>";
+        {
+       echo "<script language='JavaScript'>alert('failed'); </script>";
+        echo "<script language='JavaScript'>window.location.href='patientReg.html' </script>";
+    }
+
 }
-else if(isset($_POST['resetBTN'])){
 
 
-}
 
 
 

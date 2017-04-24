@@ -27,14 +27,18 @@ if (isset($_POST['reg'])) {
         $drgender = $_POST['gender'];
     if (isset($_POST['descr']))
         $drdesc = $_POST['descr'];
-    $query = "INSERT INTO `doctors` (`ID`, `drname`, `hosname`, `dremail`, `drpass`, `work`, `description`, `gender`) VALUES 
-            ('$drID','$drname','$drHospital','$drEmail','$drpass','$drwork','$drdesc','$drgender')";
+    $mobile = $_POST['mop'];
+    $address = $_POST['addr'];
+    $query = "INSERT INTO `doctors` (`ID`, `drname`, `hosname`, `dremail`, `drpass`, `work`, `description`, `gender`, `address`, `mobile`,`studing`) VALUES 
+            ('$drID','$drname','$drHospital','$drEmail','$drpass','$drwork','$drdesc','$drgender','$address','$mobile','drr')";
     $result = $db->query($query);
     if ($result == true) {
         echo "<script language='JavaScript'>alert('success'); </script>";
-    } else
+       echo "<script language='JavaScript'>window.location.href='homePage.php' </script>";
+    } else {
         echo "<script language='JavaScript'>alert('FAILED'); </script>";
-
+       echo "<script language='JavaScript'>window.location.href='donation.html' </script>";
+    }
 }
 
 
