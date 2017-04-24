@@ -61,10 +61,12 @@ $drr='';
 $desc='';
 $add='';
 $str='';
-
+$result2='';
 if ($_SESSION['user']=='patient'){
     $idOwner=$_SESSION['owner']; //file number
     $query="SELECT * FROM `patients` WHERE  `fileno`='$idOwner'";
+    $query2="SELECT * FROM `specpat`";
+    $result2=$db->query($query2);
     $result=$db->query($query);
     $row=mysqli_fetch_array($result);
     $name=$row['name'];
@@ -79,6 +81,8 @@ if ($_SESSION['user']=='patient'){
 else if($_SESSION['user']=='dr'){
     $idOwner=$_SESSION['owner'];
     $query="SELECT * FROM `doctors` WHERE  `ID`='$idOwner'";
+    $query2="SELECT * FROM `specdr`";
+    $result2=$db->query($query2);
     $result=$db->query($query);
     if(!$result)
         echo "<script> alert('FAILED');</script>";
@@ -138,6 +142,7 @@ echo "
     <div class=\"container sections-wrapper\">
         <div class=\"row\">
             <div class=\"primary col-md-8 col-sm-12 col-xs-12\">
+                
                 <section class=\"about section\">
                     <div class=\"section-inner\">
                         <h2 class=\"heading\">ملاحظات يومية :</h2>
@@ -155,27 +160,32 @@ echo "
 
                 <section class=\"experience section\">
                     <div class=\"section-inner\">
-                        <h2 class=\"heading\">المواهب أو خبرات العمل</h2>
+                        <h2 class=\"heading\">بياناتي المهمة :</h2>
                         <div class=\"content\">
-                            <div class=\"item\">
-                                <h3 class=\"title\">Co-Founder & Lead Developer - <span class=\"place\"><a href=\"#\">Startup Hub</a></span> <span class=\"year\">(2014 - Present)</span></h3>
-                                <p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt.</p>
-                            </div><!--//item-->
-                            <div class=\"item\">
-                                <h3 class=\"title\">Software Engineer - <span class=\"place\"><a href=\"#\">Google</a></span> <span class=\"year\">(2013 - 2014)</span></h3>
-                                <p>Vivamus a tortor eu turpis pharetra consequat quis non metus. Aliquam aliquam, orci eu suscipit pellentesque, mauris dui tincidunt enim. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.</p>
-                            </div><!--//item-->
+                        ";
+                        if($_SESSION['user']=='patient'){
+                            foreach ($result2 as $item){
+                            echo "<div class=\"item\">
+                                <h3 class=\"title\">الدكتور المسؤول عني  - <span class=\"place\"><a href=\"#\">".$item['drName']."</a></span> <span class=\"year\"></span></h3>
+                                   <p>رقم هاتف الدكتور :".$item['drMobile']."
+                                <p>عنوان البريد الإلكتروني للدكتور :".$item['drEmail'].".</p> <br> <br> </div>
+                                ";}}
+                            else{
+                            foreach ($result2 as $item){
+                                echo "<div class=\"item\">
+                                <h3 class=\"title\">اسم المريض : - <span class=\"place\"><a href=\"#\">".$item['patname']."</a></span> <span class=\"year\"></span></h3>
+                                    <p>رقم ملف المريض : ".$item['patfileno'].".</p>
+                                <p>الحالة الصحية للمريض : ".$item['patstatus'].".</p>
+                            </div><!--//item-->";}
 
-                            <div class=\"item\">
-                                <h3 class=\"title\">Software Engineer - <span class=\"place\"><a href=\"#\">eBay</a></span> <span class=\"year\">(2012 - 2013)</span></h3>
-                                <p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
-                            </div><!--//item-->
+                            };
+               echo "    </div>
+                     </div>
 
-                        </div><!--//content-->
-                    </div><!--//section-inner-->
-                </section><!--//section-->
-            </div><!--//primary-->
-            <div class=\"secondary col-md-4 col-sm-12 col-xs-12\">
+               </section>
+               </div>";
+
+           echo" <div class=\"secondary col-md-4 col-sm-12 col-xs-12\">
                  <aside class=\"info aside section\">
                     <div class=\"section-inner\">
                         <h2 class=\"heading sr-only\">معلومات أساسية عني :</h2>
