@@ -82,6 +82,7 @@
                         </ul>
                     </li>
                     <li><a href="index.html">اليوم العالمي للسرطان</a></li>
+                    <li><a href="index.php" target="_blank">دردشة</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">ماهو السرطان؟<b class="caret"></b>
                         </a>
@@ -437,7 +438,10 @@
     <!-- Contact -->
     <section id="contact" class="section-page">
       <div class="container">
-          <center><button onclick="window.location.href='sendMsg.html'" style="width: 80px ; height: 50px; color: palevioletred;font-size: medium">ارسل رسالة للمريض </button></center>
+          <center><button onclick="window.location.href='sendMsg.html'" style="width: 80px ; height: 50px; color: palevioletred;font-size: medium">ارسل رسالة للمريض </button>
+              <button onclick="window.location.href='donation.html'" style="width: 80px ; height: 50px; color: palevioletred;font-size: medium">التبرع للمرضى </button>
+
+          </center>
         <h3 class="text-center">تواصل معنا</h3>
          <div>
             

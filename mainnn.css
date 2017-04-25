@@ -1,0 +1,21 @@
+html,body{
+	margin:10px; 
+	padding :10px;
+	background-color: 	#C71585;
+	background-image:url("hhh.jpg");
+	background-attachment: inherit;
+        background-size: 100%;
+background-repeat: no-repeat;
+   
+
+}
+
+#input {
+padding: 10px;
+}
+
+#back {
+	text-align: left;
+	text-decoration: none; 
+	color: 	#C71585;
+}

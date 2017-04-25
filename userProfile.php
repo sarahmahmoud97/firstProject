@@ -2,6 +2,7 @@
 session_start();
 if($_SESSION['log']=='12')
 {
+
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]>
@@ -57,6 +58,10 @@ $password = 'anabakrah7ali';
 $dbname = 'registerationdb';
 $db = new mysqli('localhost', $user, $password, $dbname) or die("Unable to connect");
 echo "<script> alert('successfully connected');</script>";
+if ($_SESSION['user']=='patient')
+    echo "<script>alert('من فضلك قم بتفحص ايميلك يمكن ان يكون الدكتور قد بعث لك شيء مهم');</script>";
+else
+    echo "<script>alert('دكتور لا تنسى تفقد مرضاك وبعث مواعيد دواؤهم واللقاءات , شكرا');</script>";
 $idOwner = '';
 $name = '';
 $email = '';
@@ -139,7 +144,8 @@ echo "
                     <li class=\"last-item\"><a href=\"#\"><i class=\"fa fa-hacker-news\"></i></a></li>                 
                 </ul> 
             </div><!--//profile-->
-            <a class=\"btn btn-cta-primary pull-right\" href=\"http://themes.3rdwavemedia.com/\" target=\"_blank\"><i class=\"fa fa-paper-plane\"></i>تواصل معي</a>              
+            <a class=\"btn btn-cta-primary pull-right\" href=\"index.php\" target=\"_blank\"><i class=\"fa fa-paper-plane\"></i>دردشة</a> 
+              <a class=\"btn btn-cta-primary pull-right\" href=\"homePage.php\" onclick='".$_SESSION['log']='0'."' ><i class=\"fa fa-paper-plane\"></i>تسجيل الخروج</a>           
         </div><!--//container-->
     </header><!--//header-->
     
@@ -277,7 +283,19 @@ else
     echo "<script>alert('To access this page , you must login first');</script>";
     echo "<script>window.location.href='homePage.php'</script>";
 }
+
+echo "<script>
+setTimeout(function(){
+    
+    swal({title:\"تفقد ايميلك من فضلك, يمكن ان يكون هنالك معلومات مهمة\",text:\"\",timer: 2000,showConfirmButton:false});},500);
+} {
+  
+})
+
+
+</script>";
 ?>
+
 
 </body>
 </html> 
