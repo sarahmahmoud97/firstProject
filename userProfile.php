@@ -73,6 +73,7 @@ $desc = '';
 $add = '';
 $str = '';
 $result2 = '';
+$_SESSION['chat']='on';
 if ($_SESSION['user'] == 'patient') {
     $idOwner = $_SESSION['owner']; //file number
     $query = "SELECT * FROM `patients` WHERE  `fileno`='$idOwner'";
@@ -144,8 +145,9 @@ echo "
                     <li class=\"last-item\"><a href=\"#\"><i class=\"fa fa-hacker-news\"></i></a></li>                 
                 </ul> 
             </div><!--//profile-->
-            <a class=\"btn btn-cta-primary pull-right\" href=\"index.php\" target=\"_blank\"><i class=\"fa fa-paper-plane\"></i>دردشة</a> 
+            <a class=\"btn btn-cta-primary pull-right\" href=\"index.php\" target=\"_blank\"><i class=\"fa fa-paper-plane\"></i>دردشة عامة</a> 
               <a class=\"btn btn-cta-primary pull-right\" href=\"homePage.php\" onclick='".$_SESSION['log']='0'."' ><i class=\"fa fa-paper-plane\"></i>تسجيل الخروج</a>           
+        <a class=\"btn btn-cta-primary pull-right\" href=\"index11.php\" ><i class=\"fa fa-paper-plane\"></i>دردشة خاصة</a>
         </div><!--//container-->
     </header><!--//header-->
     

@@ -187,8 +187,8 @@
           <div class="col-sm-12">
             <div class="about col-sm-4">
               <h4 class="text-center text-uppercase"><i class="fa fa-heart"></i> الرعاية الصحية للمريض </h4>
-                <div class="easy-pie-chart" data-percent="80">
-                  <span>80<sup>%</sup></span>
+                <div class="easy-pie-chart" data-percent="60">
+                  <span>60<sup>%</sup></span>
                 </div>
               <p class="text-center">
                 من خلال موقعنا , يتم الحفاظ على صحة المريض من خلال وجود اطباء مختصين بحالة المريض , حيث يقومون بمابعة وضعه الصحي وتحديد الأدوية المناسبة له والطعام كذلك.
@@ -205,8 +205,8 @@
             </div>
             <div class="about col-sm-4">
               <h4 class="text-center text-uppercase"><i class="fa fa-bar-chart-o"></i> نظام اداري لقسم الاورام السرطانية </h4>
-               <div class="easy-pie-chart" data-percent="70">
-                  <span>70<sup>%</sup></span>
+               <div class="easy-pie-chart" data-percent="40">
+                  <span>40<sup>%</sup></span>
                </div>
               <p class="text-center">
                 من خلال موقعنا, نقوم باحصاء عدد المرضى الذين دخلوا الى المستشفى وعدد من صحّ منهم , وعدد الوفيات ايضاً , ونقوم ايضا بمواكبة الإحصائيات ليبقى الزائر لهذا الموقع على علم بآخر المستجدات التي تخص مرض السرطان.
